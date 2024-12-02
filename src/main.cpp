@@ -2,6 +2,7 @@
 #include <chrono>
 
 #include <day1.h>
+#include <day2.h>
 
 int main(int argc, char** argv){
 	if(argc > 3 || argc < 3) return 1;
@@ -21,6 +22,9 @@ int main(int argc, char** argv){
 
 			end = std::chrono::high_resolution_clock::now();
 			break;
+		case 2:
+			aoc::day2::solve(path);
+			end = std::chrono::high_resolution_clock::now();
 	}
 
 	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end-start);

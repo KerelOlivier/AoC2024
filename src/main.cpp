@@ -31,6 +31,11 @@ int main(int argc, char** argv){
 			aoc::solutions::day3(path);
 			end = std::chrono::high_resolution_clock::now();
 			break;
+		case 4:
+			aoc::solutions::day4(path);
+			end = std::chrono::high_resolution_clock::now();
+			break;
+
 	}
 
 	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end-start);

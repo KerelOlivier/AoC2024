@@ -13,6 +13,7 @@ set(SOURCE_FILES
 	src/day1.cpp
 	src/day2.cpp
 	src/day3.cpp
+	src/day4.cpp
 )
 
 add_compile_options(-Wall -Wextra -pedantic -g)

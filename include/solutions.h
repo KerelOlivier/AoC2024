@@ -4,5 +4,6 @@
 namespace aoc::solutions{
 	void day3(char* path);
 	void day4(char* path);
+	void day5(char* path);
 }
 #endif // SOLUTIONS_H

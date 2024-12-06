@@ -18,30 +18,28 @@ int main(int argc, char** argv){
 	std::chrono::time_point end = std::chrono::high_resolution_clock::now();
 	switch(day){
 		case 1:
-
 			aoc::day1::solve(path);
-
-			end = std::chrono::high_resolution_clock::now();
 			break;
 		case 2:
 			aoc::day2::solve(path);
-			end = std::chrono::high_resolution_clock::now();
 			break;
 		case 3:
 			aoc::solutions::day3(path);
-			end = std::chrono::high_resolution_clock::now();
 			break;
 		case 4:
 			aoc::solutions::day4(path);
-			end = std::chrono::high_resolution_clock::now();
 			break;
 		case 5:
 			aoc::solutions::day5(path);
-			end = std::chrono::high_resolution_clock::now();
 			break;
+		case 6:
+			aoc::solutions::day6(path);
+			break;
+
 
 	}
 
+	end = std::chrono::high_resolution_clock::now();
 	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
 	std::cout << "TIME: " << time.count() << "μs" << std::endl;
 

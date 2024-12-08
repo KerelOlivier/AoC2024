@@ -35,8 +35,9 @@ int main(int argc, char** argv){
 		case 6:
 			aoc::solutions::day6(path);
 			break;
-
-
+		case 7:
+			aoc::solutions::day7(path);
+			break;
 	}
 
 	end = std::chrono::high_resolution_clock::now();

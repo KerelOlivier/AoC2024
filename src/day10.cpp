@@ -22,6 +22,7 @@ void aoc::solutions::day10(char* path){
 	int height = map.size();
 
 	int score = 0;
+	int cumRating = 0;
 
 	for(int row = 0; row < map.size(); ++row){
 		for(int col = 0; col < map[0].size(); ++col){
@@ -30,6 +31,7 @@ void aoc::solutions::day10(char* path){
 				std::unordered_set<int> goals;
 				std::stack<int> q;
 				q.push(row * width + col);
+				int rating = 0;
 
 				while(!q.empty()){
 					int p = q.top();
@@ -40,8 +42,9 @@ void aoc::solutions::day10(char* path){
 
 					//std::cout << r << "," << c << ">>" << v << std::endl;
 
-					if(v == 9 && !goals.contains(p)){
-						goals.insert(p);
+					if(v == 9){
+						if(!goals.contains(p)) goals.insert(p);
+						++rating;
 						std::cout << ">>>" << r << "," << c << std::endl;
 					}
 					else{
@@ -55,14 +58,16 @@ void aoc::solutions::day10(char* path){
 						if(c + 1 < width && map[r][c+1]-'0'-v == 1)	q.push(E);
 					}
 				}
-				std::cout << row << "," << col << "->" << goals.size() << std::endl;
+				std::cout << row << "," << col << "->" << goals.size() << " " << rating << std::endl;
 				std::cout << "--------" << std::endl;
 				score += goals.size();
+				cumRating+=rating;
 			}
 		}
 	}
 	
 	std::cout << "SOLUTION 1: " << score << std::endl;
+	std::cout << "SOLUTION 2: " << cumRating << std::endl;
 
 
 }

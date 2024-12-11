@@ -1,8 +1,8 @@
 #ifndef SOLUTIONS_H
 #define SOLUTIONS_H
 
-static const char* wrong = "\u001b[31m✗\u001b[0m ";
-static const char* right = "\u001b[32m✓\u001b[0m ";
+#define wrong "\u001b[31m✗\u001b[0m ";
+#define right "\u001b[32m✓\u001b[0m ";
 
 namespace aoc::solutions{
 	void day3(char* path);
@@ -13,5 +13,6 @@ namespace aoc::solutions{
 	void day8(char* path);
 	void day9(char* path);
 	void day10(char* path);
+	void day11(char* path);
 }
 #endif // SOLUTIONS_H

@@ -47,6 +47,9 @@ int main(int argc, char** argv){
 		case 10:
 			aoc::solutions::day10(path);
 			break;
+		case 11:
+			aoc::solutions::day11(path);
+			break;
 
 
 

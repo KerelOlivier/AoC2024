@@ -112,19 +112,12 @@ void aoc::solutions::day11(char* path){
 	unsigned long int len = 0;
 	unsigned long int len2 = 0;
 
-
-	for(unsigned long int s : stones){
-		std::vector<unsigned int long> tmp;
-		tmp = Solver(s, 25);
-		len += tmp.size();
-	}
-
-	std::cout << "SOLUTION 1: " << len << std::endl;
-
 	std::map<Step, unsigned long int> mem;	
 	for(const auto s : stones){
+		len += Solve(mem, s, 25);
 		len2 += Solve(mem, s, 75);
 	}
 
+	std::cout << "SOLUTION 1: " << len << std::endl;
 	std::cout << "SOLUTION 2: " << len2 << std::endl;
 }

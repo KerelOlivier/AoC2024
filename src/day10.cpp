@@ -24,8 +24,8 @@ void aoc::solutions::day10(char* path){
 	int score = 0;
 	int cumRating = 0;
 
-	for(int row = 0; row < map.size(); ++row){
-		for(int col = 0; col < map[0].size(); ++col){
+	for(size_t row = 0; row < map.size(); ++row){
+		for(size_t col = 0; col < map[0].size(); ++col){
 			if(map[row][col] == '0'){
 				// Start traversing the hikes
 				std::unordered_set<int> goals;

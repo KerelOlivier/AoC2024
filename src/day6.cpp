@@ -20,14 +20,7 @@ bool CreatesLoop(std::vector<std::vector<bool>>& map, int r, int c, int row, int
 	int l = width * height * 5;
 	int steps = 0;
 	
-	int start_dir = dir;
-	int rs = row;
-	int cs = col;
-	int ds = dir;
-	//dir = (dir + 1) % 4;
-
 	while(steps < l && row < height && row >= 0 && col < width && col >= 0){
-		//std::cout << "POS: [" << row << "," << col << "]" << std::endl;
 
 		//Simulate
 		if(dir == 0){ // N
@@ -113,7 +106,6 @@ void aoc::solutions::day6(char* path){
 	std::vector<bool> visited(l);
 	std::unordered_set<int> blocked;
 	while(row < height && row >= 0 && col < width && col >= 0){
-		//std::cout << "POS: [" << row << "," << col << "]" << std::endl;
 		//Check if placing an obstacle in front would cause a loop
 
 		//Simulate

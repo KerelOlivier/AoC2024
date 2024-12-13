@@ -8,7 +8,7 @@
 unsigned long int Part1(std::string input){
 	std::vector<int> res;
 	
-	for(int i = 0; i < input.length(); ++i){
+	for(size_t i = 0; i < input.length(); ++i){
 		for(char j = 0; j < input[i]-'0'; ++j){
 			if(i%2 == 0){
 				res.push_back(i/2);
@@ -19,7 +19,7 @@ unsigned long int Part1(std::string input){
 		}
 	}
 	unsigned long int checksum = 0;
-	int v = res.size()-1;
+	size_t v = res.size()-1;
 	for(size_t u = 0; u < res.size(); ++u){
 		if(res[u] < 0){
 			while(res[v] < 0 && u < v) --v;
@@ -46,7 +46,7 @@ unsigned long int Part2(std::string input){
 	std::vector<Block> files;
 	std::vector<Block> free;
 	int stride = 0;
-	for(int i =0; i < input.length(); ++i){
+	for(int i =0; i < (int)input.length(); ++i){
 		int size = input[i] - '0';
 		if(i%2 == 0){
 			files.push_back({i/2, stride, size});
@@ -57,7 +57,7 @@ unsigned long int Part2(std::string input){
 	}
 
 	for(int i = files.size()-1; i >= 0; --i){
-		for(int j = 0; j < free.size(); ++j){
+		for(size_t j = 0; j < free.size(); ++j){
 			if(free[j].size >= files[i].size && free[j].stride < files[i].stride){
 				free[j].size -= files[i].size;
 				files[i].stride = free[j].stride;

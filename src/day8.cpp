@@ -13,7 +13,7 @@ struct Tower{
 };
 
 std::unordered_set<size_t> GetDistinctAntinodes(
-		std::vector<Tower> towers, size_t width, size_t height){
+		std::vector<Tower> towers, int width, int height){
 	std::unordered_set<size_t> nodes;
 
 	for(size_t i = 0; i < towers.size(); ++i){
@@ -28,23 +28,12 @@ std::unordered_set<size_t> GetDistinctAntinodes(
 				int u = towers[j].x - dx;
 				int v = towers[j].y - dy;
 				
-				//std::cout << towers[i].freq << " [" << towers[i].x << "," << towers[i].y << "] ["
-				//		         << towers[j].x << "," << towers[j].y << "]" << std::endl; 
-
 				if(x >= 0 && x < width && y >=0 && y < height){
 					nodes.insert(y * width + x);
-					//std::cout << right << "[" << x << "," << y << "] " << (y * width * x) << std::endl;
-				}else{
-					//std::cout << wrong << "[" << x << "," << y << "]" << std::endl;
 				}
 				if(u >= 0 && u < width && v >=0 && v < height){
 					nodes.insert(v * width + u);
-					//std::cout << right << "[" << u << "," << v << "] " << (v * width * u) << std::endl;
-				}else{
-					//std::cout << wrong << "[" << u << "," << v << "]" << std::endl;
 				}
-
-
 			}
 		}
 	}
@@ -53,7 +42,7 @@ std::unordered_set<size_t> GetDistinctAntinodes(
 }
 
 std::unordered_set<size_t> GetDistinctAntinodes2(
-		std::vector<Tower> towers, size_t width, size_t height){
+		std::vector<Tower> towers, int width, int height){
 	std::unordered_set<size_t> nodes;
 
 	for(size_t i = 0; i < towers.size(); ++i){

@@ -4,7 +4,6 @@
 #include <vector>
 #include <queue>
 #include <solutions.h>
-#include <strstream>
 
 struct Region{
 	int area;

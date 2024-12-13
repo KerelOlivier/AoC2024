@@ -1,8 +1,5 @@
 #include <iostream>
 #include <chrono>
-
-#include <day1.h>
-#include <day2.h>
 #include <solutions.h>
 
 int main(int argc, char** argv){
@@ -18,10 +15,10 @@ int main(int argc, char** argv){
 	std::chrono::time_point end = std::chrono::high_resolution_clock::now();
 	switch(day){
 		case 1:
-			aoc::day1::solve(path);
+			aoc::solutions::day1(path);
 			break;
 		case 2:
-			aoc::day2::solve(path);
+			aoc::solutions::day2(path);
 			break;
 		case 3:
 			aoc::solutions::day3(path);

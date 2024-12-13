@@ -1,4 +1,3 @@
-#include <day1.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,7 +5,7 @@
 #include <vector>
 #include <cmath>
 #include <unordered_map>
-
+#include <solutions.h>
 std::vector<std::vector<int>> parse(std::string path){
 	std::ifstream stream(path, std::ios::in);
 
@@ -28,7 +27,7 @@ std::vector<std::vector<int>> parse(std::string path){
 
 }
 
-void aoc::day1::solve(char* path){
+void aoc::solutions::day1(char* path){
 	std::cout <<"TEST" <<std::endl;
 
 	std::vector<std::vector<int>> l = parse(std::string(path));

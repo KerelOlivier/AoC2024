@@ -1,9 +1,9 @@
-#include <day2.h>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include <solutions.h>
 
 bool IsValid(int lhs, int rhs, int dir){
 	int d = rhs - lhs;
@@ -11,7 +11,7 @@ bool IsValid(int lhs, int rhs, int dir){
 		std::abs(d) >= 1 && std::abs(d) <= 3;
 }
 
-void aoc::day2::solve(char* path){
+void aoc::solutions::day2(char* path){
 	 // Parse input
 	std::ifstream stream(std::string(path), std::ios::in);
 

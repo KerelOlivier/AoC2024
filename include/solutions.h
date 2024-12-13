@@ -5,6 +5,8 @@
 #define right "\u001b[32m✓\u001b[0m ";
 
 namespace aoc::solutions{
+	void day1(char* path);
+	void day2(char* path);
 	void day3(char* path);
 	void day4(char* path);
 	void day5(char* path);

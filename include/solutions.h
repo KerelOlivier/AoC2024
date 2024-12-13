@@ -17,5 +17,6 @@ namespace aoc::solutions{
 	void day10(char* path);
 	void day11(char* path);
 	void day12(char* path);
+	void day13(char* path);
 }
 #endif // SOLUTIONS_H

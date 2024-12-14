@@ -61,16 +61,45 @@ void aoc::solutions::day14(char* path){
 		else if(x > width / 2 && y < height/2) ++quadrants[2];
 		else if(x > width / 2 && y > height / 2) ++quadrants[3];
 	}
-
-	for(int row = 0; row < height; ++row){
-		for(int col =0; col < width; ++col){
-			int id = row * width + col;
-			std::cout << (map[id] == 0 ? "." : std::to_string(map[id]));
-		}
-		std::cout << std::endl;
-	}
-
 	int safety = quadrants[0] * quadrants[1] * quadrants[2] * quadrants[3];
 	std::cout << "SOLUTION 1: " << safety << std::endl;
+
+	int stepsize = 48;
+	int step = 0;
+
+	map = std::vector<int>(width*height, 0);
+	for(int i = 0; i < 1000; ++i){
+		std::cout << "STEP: " << step + stepsize <<std::endl;
+		for(Robot& robot: robots){
+			robot.pos.x += stepsize * robot.vel.x;
+			robot.pos.y += stepsize * robot.vel.y;
+
+			robot.pos.x %= width;
+			robot.pos.y %= height;
+
+			if(robot.pos.x < 0) robot.pos.x += width;
+			if(robot.pos.y < 0) robot.pos.y += height;
+			
+			int id = robot.pos.y * width + robot.pos.x;
+			++map[id];
+		}
+		step+= stepsize;
+		// Print current state
+		
+		for(int row = 0; row < height; ++row){
+			for(int col =0; col < width; ++col){
+				int id = row * width + col;
+				std::cout << (map[id] == 0 ? "." : std::to_string(map[id]));
+			}
+			std::cout << std::endl;
+		}
+		std::cout << std::endl;
+
+		std::cin.get();
+		stepsize = 101;
+
+		map = std::vector<int>(width*height, 0);
+	}
+
 	
 }

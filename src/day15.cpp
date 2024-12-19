@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <solutions.h>
 
-long int Part1(std::vector<int> map, std::vector<int>& moves, int robot, int width){
+long int Part1(std::vector<int> map, std::vector<int>& moves, size_t robot, size_t width){
 
 	for(const int move : moves){
 		// Determine new position
@@ -101,18 +101,15 @@ long int Part1(std::vector<int> map, std::vector<int>& moves, int robot, int wid
 	return res;
 }
 
-long int Part2(std::vector<int> map, std::vector<int>& moves, int robot, int width){
+long int Part2(std::vector<int> map, std::vector<int>& moves, size_t robot, size_t width){
 
 	for(size_t i = 0; i < map.size(); ++i){
-		int row = i / width;
-		int col = i % width;
 		std::cout << (i == robot ? '@' : map[i] == 0 ? '.' : map[i] == 1 ? '#' : 
 				map[i] == 2 ? '[' : ']');
 		if(i > 0 && i % (width) == width-1) std::cout << std::endl;
 		
 	}
 
-	char ms[4] = {'^','>','v','<'};
 
 	for(const int move : moves){
 		// Determine new position
@@ -147,14 +144,8 @@ long int Part2(std::vector<int> map, std::vector<int>& moves, int robot, int wid
 						
 					// Wall check
 					if(canMove){
-						//std::cout << "MOVEABLE" << std::endl;
 						std::unordered_map<int, int> mapping;
 						for(const int id : visited){
-							int row = id / width;
-							int col = id % width;
-							//std::cout << row << "," << col << std::endl;
-							int rr = robot/width;
-							//std::cout << rr << "==" << row <<std::endl;
 							mapping[id] = !visited.contains(id+width)? 0: map[id+width];
 						}
 						
@@ -189,7 +180,6 @@ long int Part2(std::vector<int> map, std::vector<int>& moves, int robot, int wid
 				}
 				break;
 			case 2:
-				//std::cout << "UP" << std::endl;
 				check_pos += width;
 				if(map[check_pos] == 0){
 					robot += width;
@@ -219,11 +209,6 @@ long int Part2(std::vector<int> map, std::vector<int>& moves, int robot, int wid
 						//std::cout << "MOVEABLE" << std::endl;
 						std::unordered_map<int, int> mapping;
 						for(const int id : visited){
-							int row = id / width;
-							int col = id % width;
-							//std::cout << row << "," << col << std::endl;
-							int rr = robot/width;
-							//std::cout << rr << "==" << row <<std::endl;
 							mapping[id] = !visited.contains(id-width)? 0: map[id-width];
 						}
 						
@@ -295,7 +280,6 @@ void aoc::solutions::day15(char* path){
 	std::vector<int> warehouse;
 	std::vector<int> warehouse2;
 	int width = 0;
-	int height = 0;
 	int robot = 0;
 
 	// Process Warehouse
@@ -329,7 +313,6 @@ void aoc::solutions::day15(char* path){
 					warehouse2.push_back(0);
 			}
 		}
-		++height;
 	}
 	
 

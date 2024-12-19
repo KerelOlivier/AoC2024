@@ -59,8 +59,9 @@ int main(int argc, char** argv){
 		case 15:
 			aoc::solutions::day15(path);
 			break;
-
-
+		case 16:
+			aoc::solutions::day16(path);
+			break;
 	}
 
 	end = std::chrono::high_resolution_clock::now();

@@ -30,13 +30,13 @@ void PrintMemory(std::vector<bool>& memory, size_t size){
 	}
 }
 
-size_t Part1(std::vector<bool> memory, std::vector<Point>& locations, size_t size){
+size_t Part1(std::vector<bool> memory, std::vector<Point>& locations, size_t size, size_t iter){
 
-	for(int i = 0; i < 1024; ++i){
+	for(size_t i = 0; i < iter; ++i){
 		memory[locations[i].y * size + locations[i].x] = false;
 	}
 
-	PrintMemory(memory, size);
+	//PrintMemory(memory, size);
 
 	// Path finding
 	std::unordered_map<size_t, size_t> prev;
@@ -78,6 +78,7 @@ size_t Part1(std::vector<bool> memory, std::vector<Point>& locations, size_t siz
 		}
 	}
 
+	if(!visited.contains(size*size-1)) return 0;
 
 	// Reconstruct path
 	std::unordered_set<size_t> path;
@@ -88,8 +89,8 @@ size_t Part1(std::vector<bool> memory, std::vector<Point>& locations, size_t siz
 		p = prev[p];
 	}
 	
+	/*
 	std::cout << std::endl;
-
 	// Draw solved memory
 	for(size_t row =0; row < size; ++row){
 		for(size_t col = 0; col < size; ++col){
@@ -100,9 +101,25 @@ size_t Part1(std::vector<bool> memory, std::vector<Point>& locations, size_t siz
 		}
 		std::cout << std::endl;
 	}
+	*/
 	
 	return path.size()-1;
 }
+
+size_t Part2(std::vector<bool> memory, std::vector<Point>& locations, size_t width){
+	size_t i = 1024;
+	size_t j = locations.size();
+	size_t res = 1;
+	while(i < j-1){
+		size_t iter = (i + j) / 2;
+		res = Part1(memory, locations, width, iter);
+		if(res == 0) j = iter;
+		else i = iter;
+	}
+
+	return j-1;
+}
+
 
 void aoc::solutions::day18(char* path){
 	std::ifstream fs(path);
@@ -121,7 +138,9 @@ void aoc::solutions::day18(char* path){
 
 	std::cout << locations.size() << std::endl;
 
-	size_t res1 = Part1(memory, locations, size);	
+	size_t res1 = Part1(memory, locations, size, 1024);
+	size_t res2 = Part2(memory, locations, size);
 
 	std::cout << "SOLUTION 1: " << res1 << std::endl;
+	std::cout << "SOLUTION 2: " << locations[res2].x << "," << locations[res2].y << std::endl;
 }
